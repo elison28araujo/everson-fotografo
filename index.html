@@ -33,9 +33,6 @@ softxl: '0 20px 60px rgba(0,0,0,.45)'
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
 <style>
 
 html{
@@ -45,72 +42,8 @@ scroll-behavior:smooth;
 body{
 font-family:Inter,sans-serif;
 background:#000;
+color:white;
 }
-
-.glass{
-background:rgba(255,255,255,.035);
-border:1px solid rgba(255,255,255,.10);
-backdrop-filter:blur(14px);
-}
-
-.hero-overlay{
-background:
-linear-gradient(90deg,rgba(0,0,0,.46) 0%,rgba(0,0,0,.30) 40%,rgba(0,0,0,.12) 70%,rgba(0,0,0,.10) 100%),
-linear-gradient(180deg,rgba(0,0,0,.10) 0%,rgba(0,0,0,.62) 100%);
-}
-
-.btn-white{
-background:#fff;
-color:#000;
-transition:0.3s;
-}
-
-.btn-white:hover{
-transform:translateY(-2px);
-box-shadow:0 16px 34px rgba(255,255,255,.16);
-}
-
-.btn-dark{
-background:rgba(255,255,255,.04);
-border:1px solid rgba(255,255,255,.10);
-}
-
-.reveal{
-opacity:0;
-transform:translateY(30px);
-}
-
-.slider-shell{
-overflow:hidden;
-}
-
-.slider-track{
-display:flex;
-width:max-content;
-gap:1rem;
-animation:slideLoop 24s linear infinite;
-}
-
-.slider-track:hover{
-animation-play-state:paused;
-}
-
-.slide-card{
-min-width:300px;
-}
-
-@keyframes slideLoop{
-
-from{
-transform:translateX(0)
-}
-
-to{
-transform:translateX(-50%)
-}
-
-}
-/* GALERIA CORPORATIVA */
 
 .galeria{
 display:grid;
@@ -133,8 +66,6 @@ transform:scale(1.04);
 box-shadow:0 20px 60px rgba(0,0,0,.7);
 }
 
-/* LIGHTBOX */
-
 #lightbox{
 display:none;
 position:fixed;
@@ -153,154 +84,74 @@ max-width:90%;
 max-height:90%;
 border-radius:12px;
 }
+
+.hero{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.85)),url("media/hero.jpg");
+background-size:cover;
+background-position:center;
+}
+
+.btn{
+background:white;
+color:black;
+padding:15px 30px;
+border-radius:40px;
+font-weight:600;
+transition:.3s;
+}
+
+.btn:hover{
+transform:translateY(-3px);
+box-shadow:0 15px 40px rgba(255,255,255,.2);
+}
+
 </style>
 
 </head>
 
-<body class="text-white">
+<body>
 
-<header class="fixed top-0 inset-x-0 z-50">
+<section class="hero">
 
-<div class="mx-auto max-w-7xl px-4 pt-4">
+<div>
 
-<div class="glass rounded-full px-5 py-3 flex items-center justify-between">
-
-<a href="#" class="text-xl font-semibold">Everson Araujo</a>
-
-<nav class="hidden md:flex gap-6 text-sm text-white/70">
-
-<a href="#links">Links</a>
-<a href="#sobre">Sobre</a>
-<a href="#portfolio">Portfólio</a>
-<a href="#contato">Contato</a>
-
-</nav>
-
-<a href="https://wa.me/559184218754" target="_blank"
-class="btn-white rounded-full px-5 py-3 text-sm font-semibold">
-
-Agendar Ensaio
-
-</a>
-
-</div>
-
-</div>
-
-</header>
-
-<section class="relative min-h-screen flex items-center overflow-hidden">
-
-<img src="media/hero.jpg"
-class="absolute inset-0 w-full h-full object-cover">
-
-<div class="absolute inset-0 hero-overlay"></div>
-
-<div class="relative z-10 mx-auto max-w-7xl px-4 pt-32 pb-16">
-
-<h1 class="text-6xl font-semibold">
+<h1 class="text-6xl font-bold mb-6">
 Everson Araujo
 </h1>
 
-<p class="mt-6 text-xl text-white/70">
+<p class="text-xl mb-8">
 Fotógrafo | Retratos Corporativos & Fashion
 </p>
 
-<div class="mt-8 flex gap-4">
-
-<a href="#links" class="btn-white px-6 py-3 rounded-full font-semibold">
-Ver Links
+<a href="#corporativo" class="btn">
+Ver Ensaios
 </a>
-
-<a href="mentoria.html"
-class="btn-white px-6 py-3 rounded-full font-semibold">
-Mentoria Workshop
-</a>
-
-</div>
 
 </div>
 
 </section>
 
-<section id="links" class="py-24">
-
-<div class="max-w-4xl mx-auto text-center">
-
-<h2 class="text-5xl font-semibold mb-12">
-Escolha o que você procura
-</h2>
-
-<div class="grid gap-4">
-
-<a href="#corporativo" class="btn-white py-6 rounded-xl text-xl">
-Ensaio Corporativo
-</a>
-
-<a href="#fashion" class="btn-white py-6 rounded-xl text-xl">
-Editorial Fashion
-</a>
-
-<a href="mentoria.html" class="btn-white py-6 rounded-xl text-xl">
-Mentoria Workshop
-</a>
-
-<a href="https://www.instagram.com/everson.fotografo/" target="_blank"
-class="btn-white py-6 rounded-xl text-xl">
-Instagram
-</a>
-
-</div>
-
-</div>
-
-</section>
-
-<section id="sobre" class="py-24">
-
-<div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center px-6">
-
-<div>
-
-<h2 class="text-6xl font-light">
-Everson Araujo
-</h2>
-
-<p class="mt-6 text-xl text-white/70">
-
-Bacharel em Direito e fotógrafo desde 2018.
-
-Especialista em campanhas publicitárias,
-marca pessoal e posicionamento de imagem.
-
-</p>
-
-</div>
-
-<div>
-
-<img src="media/sobre.jpg"
-class="rounded-3xl border border-white/10">
-
-</div>
-
-</div>
-
-</section>
-
-<section id="portfolio" class="py-24">
+<section id="corporativo" class="py-24">
 
 <div class="max-w-7xl mx-auto px-6">
 
-<h2 class="text-5xl mb-10">
-Portfólio
+<h2 class="text-5xl mb-10 text-center">
+Ensaio Corporativo
 </h2>
 
-<div class="grid md:grid-cols-3 gap-6">
+<div class="galeria">
 
-<img src="media/hero.jpg" class="rounded-2xl">
-<img src="media/sobre.jpg" class="rounded-2xl">
-<img src="media/hero.jpg" class="rounded-2xl">
+<img src="media/primeira.jpg" onclick="abrirImagem(this)">
+<img src="media/segunda.jpg" onclick="abrirImagem(this)">
+<img src="media/terceira.jpg" onclick="abrirImagem(this)">
+<img src="media/quarta.jpg" onclick="abrirImagem(this)">
+<img src="media/quinta.jpg" onclick="abrirImagem(this)">
+<img src="media/sexta.jpg" onclick="abrirImagem(this)">
 
 </div>
 
@@ -308,54 +159,36 @@ Portfólio
 
 </section>
 
-<section id="contato" class="py-24">
-
-<div class="max-w-4xl mx-auto text-center">
+<section class="py-24 text-center">
 
 <h2 class="text-5xl mb-8">
-Vamos construir uma imagem que comunica
+Agende seu ensaio
 </h2>
 
-<p class="text-white/70 mb-8">
-
-WhatsApp: +55 91 8421-8754
-
-</p>
-
-<a href="https://wa.me/559184218754"
-class="btn-white px-8 py-4 rounded-full font-semibold">
-
-Agendar Ensaio
-
+<a href="https://wa.me/559184218754" class="btn">
+Falar no WhatsApp
 </a>
-
-</div>
 
 </section>
 
-<footer class="py-10 text-center text-white/50">
-
-© 2026 Everson Araujo
-
-</footer>
+<div id="lightbox" onclick="fecharImagem()">
+<img id="lightbox-img">
+</div>
 
 <script>
 
-gsap.registerPlugin(ScrollTrigger)
+function abrirImagem(img){
 
-gsap.utils.toArray(".reveal").forEach((el)=>{
+document.getElementById("lightbox").style.display="flex"
+document.getElementById("lightbox-img").src=img.src
 
-gsap.to(el,{
-scrollTrigger:{
-trigger:el,
-start:"top 86%"
-},
-opacity:1,
-y:0,
-duration:1
-})
+}
 
-})
+function fecharImagem(){
+
+document.getElementById("lightbox").style.display="none"
+
+}
 
 </script>
 
