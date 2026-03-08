@@ -125,6 +125,50 @@
       }
     }
 
+    .video-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: #111;
+      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+    }
+
+    .video-card video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      background: #000;
+    }
+
+    .video-badge {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      z-index: 3;
+      background: rgba(0,0,0,.45);
+      border: 1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      color: white;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .fade-line {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent);
+    }
+
+    .section-soft {
+      background:
+        radial-gradient(circle at top left, rgba(139,94,60,.12), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(215,201,188,.08), transparent 30%);
+    }
+
     #lightbox {
       display: none;
       position: fixed;
@@ -142,15 +186,8 @@
       border-radius: 18px;
     }
 
-    .fade-line {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent);
-    }
-
-    .section-soft {
-      background:
-        radial-gradient(circle at top left, rgba(139,94,60,.12), transparent 35%),
-        radial-gradient(circle at bottom right, rgba(215,201,188,.08), transparent 30%);
+    .no-underline {
+      text-decoration: none;
     }
   </style>
 </head>
@@ -164,10 +201,11 @@
         </a>
 
         <nav class="hidden md:flex items-center gap-7 text-sm text-white/75">
-          <a href="#sobre" class="hover:text-white transition">Sobre</a>
-          <a href="#galeria" class="hover:text-white transition">Galeria</a>
-          <a href="#fundadores" class="hover:text-white transition">Fundadores</a>
-          <a href="#contato" class="hover:text-white transition">Contato</a>
+          <a href="#sobre" class="hover:text-white transition no-underline">Sobre</a>
+          <a href="#galeria" class="hover:text-white transition no-underline">Galeria</a>
+          <a href="#videos" class="hover:text-white transition no-underline">Vídeos</a>
+          <a href="#fundadores" class="hover:text-white transition no-underline">Fundadores</a>
+          <a href="#contato" class="hover:text-white transition no-underline">Contato</a>
         </nav>
 
         <a href="https://www.instagram.com/studioloft.br/" target="_blank" class="btn-light rounded-full px-5 py-3 text-sm font-semibold">
@@ -200,6 +238,10 @@
           <div class="mt-10 flex flex-col sm:flex-row gap-4">
             <a href="#galeria" class="btn-light rounded-full px-8 py-4 font-semibold text-center">
               Ver fotos do Studio
+            </a>
+
+            <a href="#videos" class="btn-dark rounded-full px-8 py-4 font-semibold text-center">
+              Assistir tour e depoimento
             </a>
 
             <a href="https://wa.me/559184218754?text=Olá%20Everson,%20quero%20informações%20sobre%20o%20Studio%20Loft." target="_blank" class="btn-dark rounded-full px-8 py-4 font-semibold text-center">
@@ -299,7 +341,47 @@
       </div>
     </section>
 
-    <section id="fundadores" class="py-24 border-t border-white/10 section-soft">
+    <section id="videos" class="py-24 border-t border-white/10 section-soft">
+      <div class="mx-auto max-w-7xl px-6">
+        <div class="text-center mb-14">
+          <p class="uppercase tracking-[0.28em] text-sm text-white/55 mb-4">
+            Vídeos
+          </p>
+          <h2 class="title-font text-4xl sm:text-5xl lg:text-6xl">
+            Tour do Studio e depoimento
+          </h2>
+          <p class="mt-4 text-white/72 text-lg max-w-3xl mx-auto">
+            Uma forma mais próxima de conhecer o espaço, sentir a atmosfera do Studio Loft e ouvir a experiência de quem faz parte desse projeto.
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-8">
+          <div class="video-card">
+            <div class="video-badge">Tour do Studio</div>
+            <video controls playsinline preload="metadata" poster="pri.jpg">
+              <source src="alguns_fotos.mp4" type="video/mp4">
+              Seu navegador não suporta vídeo.
+            </video>
+          </div>
+
+          <div class="video-card">
+            <div class="video-badge">Depoimento</div>
+            <video controls playsinline preload="metadata" poster="fundador_everson.jpg">
+              <source src="depoimento.mp4" type="video/mp4">
+              Seu navegador não suporta vídeo.
+            </video>
+          </div>
+        </div>
+
+        <div class="text-center mt-10">
+          <a href="https://wa.me/559184218754?text=Olá%20Everson,%20assisti%20ao%20tour%20do%20Studio%20Loft%20e%20quero%20mais%20informações." target="_blank" class="btn-light rounded-full px-8 py-4 font-semibold inline-block">
+            Agendar visita ou sessão
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="fundadores" class="py-24 border-t border-white/10">
       <div class="mx-auto max-w-7xl px-6">
         <div class="text-center mb-16">
           <p class="uppercase tracking-[0.28em] text-sm text-white/55 mb-4">
