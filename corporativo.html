@@ -1,294 +1,298 @@
-!DOCTYPE html
-html lang=pt-BR
-head
-  meta charset=UTF-8 
-  meta name=viewport content=width=device-width, initial-scale=1.0 
-  titleEnsaio Corporativo  Everson Araujotitle
-  meta name=description content=Ensaio Corporativo e Posicionamento de Imagem com Everson Araujo. Retratos profissionais para executivos, empreendedores e marcas. 
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ensaio Corporativo | Everson Araujo</title>
+  <meta name="description" content="Ensaio Corporativo e Posicionamento de Imagem com Everson Araujo. Retratos profissionais para executivos, empreendedores e marcas." />
 
-  script src=httpscdn.tailwindcss.comscript
+  <script src="https://cdn.tailwindcss.com"></script>
 
-  script
+  <script>
     tailwind.config = {
-      theme {
-        extend {
-          colors {
-            base '#050505',
-            soft '#0b0b0b',
-            panel '#111111'
+      theme: {
+        extend: {
+          colors: {
+            base: '#050505',
+            soft: '#0b0b0b',
+            panel: '#111111'
           },
-          boxShadow {
-            softxl '0 20px 60px rgba(0,0,0,.45)'
+          boxShadow: {
+            softxl: '0 20px 60px rgba(0,0,0,.45)'
           }
         }
       }
     }
-  script
+  </script>
 
-  link rel=preconnect href=httpsfonts.googleapis.com
-  link rel=preconnect href=httpsfonts.gstatic.com crossorigin
-  link href=httpsfonts.googleapis.comcss2family=Interwght@400;500;600;700;800;900&display=swap rel=stylesheet
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-  script src=httpscdnjs.cloudflare.comajaxlibsgsap3.12.5gsap.min.jsscript
-  script src=httpscdnjs.cloudflare.comajaxlibsgsap3.12.5ScrollTrigger.min.jsscript
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
-  style
+  <style>
     html {
-      scroll-behavior smooth;
+      scroll-behavior: smooth;
     }
 
     body {
-      font-family Inter, sans-serif;
-      background #050505;
+      font-family: Inter, sans-serif;
+      background: #050505;
+      color: white;
+      margin: 0;
     }
 
     .glass {
-      background rgba(255,255,255,.04);
-      border 1px solid rgba(255,255,255,.10);
-      backdrop-filter blur(14px);
-      -webkit-backdrop-filter blur(14px);
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.10);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
     }
 
     .btn-white {
-      background #fff;
-      color #000;
-      transition .3s;
+      background: #fff;
+      color: #000;
+      transition: .3s;
+      text-decoration: none;
     }
 
-    .btn-whitehover {
-      transform translateY(-2px);
-      box-shadow 0 16px 34px rgba(255,255,255,.16);
+    .btn-white:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 34px rgba(255,255,255,.16);
     }
 
     .btn-dark {
-      background rgba(255,255,255,.04);
-      border 1px solid rgba(255,255,255,.10);
-      color #fff;
-      transition .3s;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.10);
+      color: #fff;
+      transition: .3s;
+      text-decoration: none;
     }
 
-    .btn-darkhover {
-      background rgba(255,255,255,.08);
-      transform translateY(-2px);
+    .btn-dark:hover {
+      background: rgba(255,255,255,.08);
+      transform: translateY(-2px);
     }
 
     .reveal {
-      opacity 0;
-      transform translateY(30px);
+      opacity: 0;
+      transform: translateY(30px);
     }
 
     .galeria {
-      display grid;
-      grid-template-columns repeat(auto-fit, minmax(300px, 1fr));
-      gap 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
     }
 
     .galeria img {
-      width 100%;
-      height 460px;
-      object-fit cover;
-      border-radius 20px;
-      cursor pointer;
-      transition all .35s ease;
-      box-shadow 0 10px 40px rgba(0,0,0,.45);
-      border 1px solid rgba(255,255,255,.08);
+      width: 100%;
+      height: 460px;
+      object-fit: cover;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all .35s ease;
+      box-shadow: 0 10px 40px rgba(0,0,0,.45);
+      border: 1px solid rgba(255,255,255,.08);
     }
 
-    .galeria imghover {
-      transform scale(1.03);
-      box-shadow 0 20px 60px rgba(0,0,0,.7);
+    .galeria img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 20px 60px rgba(0,0,0,.7);
     }
 
     #lightbox {
-      display none;
-      position fixed;
-      inset 0;
-      background rgba(0,0,0,.94);
-      align-items center;
-      justify-content center;
-      z-index 9999;
-      padding 20px;
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.94);
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 20px;
     }
 
     #lightbox img {
-      max-width 92%;
-      max-height 92%;
-      border-radius 16px;
+      max-width: 92%;
+      max-height: 92%;
+      border-radius: 16px;
     }
-  style
-head
+  </style>
+</head>
 
-body class=text-white
-  header class=fixed top-0 inset-x-0 z-50
-    div class=mx-auto max-w-7xl px-4 pt-4
-      div class=glass rounded-full px-5 py-3 flex items-center justify-between
-        a href=index.html class=text-xl smtext-2xl font-semibold tracking-tightEverson Araujoa
+<body>
+  <header class="fixed top-0 inset-x-0 z-50">
+    <div class="mx-auto max-w-7xl px-4 pt-4">
+      <div class="glass rounded-full px-5 py-3 flex items-center justify-between">
+        <a href="index.html" class="text-xl sm:text-2xl font-semibold tracking-tight text-white" style="text-decoration:none;">Everson Araujo</a>
 
-        nav class=hidden mdflex items-center gap-7 text-sm text-white75
-          a href=#sobre class=hovertext-white transitionSobrea
-          a href=#galeria class=hovertext-white transitionGaleriaa
-          a href=#contato class=hovertext-white transitionContatoa
-        nav
+        <nav class="hidden md:flex items-center gap-7 text-sm text-white/75">
+          <a href="#sobre" class="text-white" style="text-decoration:none;">Sobre</a>
+          <a href="#galeria" class="text-white" style="text-decoration:none;">Galeria</a>
+          <a href="#contato" class="text-white" style="text-decoration:none;">Contato</a>
+        </nav>
 
-        a href=httpswa.me559184218754text=Olá%20Everson,%20quero%20um%20orçamento%20para%20Ensaio%20Corporativo. target=_blank class=btn-white rounded-full px-5 py-3 text-sm font-semibold
+        <a href="https://wa.me/559184218754?text=Olá%20Everson,%20quero%20um%20orçamento%20para%20Ensaio%20Corporativo." target="_blank" class="btn-white rounded-full px-5 py-3 text-sm font-semibold">
           Solicitar orçamento
-        a
-      div
-    div
-  header
+        </a>
+      </div>
+    </div>
+  </header>
 
-  main
-    section class=pt-40 pb-20
-      div class=mx-auto max-w-7xl px-6
-        div class=max-w-4xl
-          p class=reveal text-sm uppercase tracking-[0.25em] text-white55 mb-4
+  <main>
+    <section class="pt-40 pb-20">
+      <div class="mx-auto max-w-7xl px-6">
+        <div class="max-w-4xl">
+          <p class="reveal text-sm uppercase tracking-[0.25em] text-white/55 mb-4">
             Ensaio Corporativo
-          p
+          </p>
 
-          h1 class=reveal text-5xl smtext-6xl lgtext-7xl font-semibold leading-[0.95] tracking-[-0.05em]
+          <h1 class="reveal text-5xl sm:text-6xl lg:text-7xl font-semibold leading-[0.95] tracking-[-0.05em]">
             Posicionamento de Imagem para profissionais que querem transmitir autoridade.
-          h1
+          </h1>
 
-          p class=reveal mt-6 text-lg smtext-xl text-white72 max-w-3xl leading-relaxed
+          <p class="reveal mt-6 text-lg sm:text-xl text-white/72 max-w-3xl leading-relaxed">
             Retratos profissionais para executivos, empreendedores e marcas que desejam fortalecer presença digital, percepção de valor e credibilidade visual.
-          p
+          </p>
 
-          div class=reveal mt-8 flex flex-col smflex-row gap-4
-            a href=#galeria class=btn-white rounded-full px-7 py-4 font-semibold text-center
+          <div class="reveal mt-8 flex flex-col sm:flex-row gap-4">
+            <a href="#galeria" class="btn-white rounded-full px-7 py-4 font-semibold text-center">
               Ver catálogo completo
-            a
+            </a>
 
-            a href=httpswa.me559184218754text=Olá%20Everson,%20quero%20um%20orçamento%20para%20Ensaio%20Corporativo. target=_blank class=btn-dark rounded-full px-7 py-4 font-semibold text-center
+            <a href="https://wa.me/559184218754?text=Olá%20Everson,%20quero%20um%20orçamento%20para%20Ensaio%20Corporativo." target="_blank" class="btn-dark rounded-full px-7 py-4 font-semibold text-center">
               Falar no WhatsApp
-            a
-          div
-        div
-      div
-    section
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    section id=sobre class=pb-20
-      div class=mx-auto max-w-7xl px-6
-        div class=grid lggrid-cols-2 gap-6
-          div class=reveal glass rounded-[28px] p-8
-            h2 class=text-3xl smtext-4xl font-semiboldPara quem éh2
-            p class=mt-5 text-white72 leading-relaxed
+    <section id="sobre" class="pb-20">
+      <div class="mx-auto max-w-7xl px-6">
+        <div class="grid lg:grid-cols-2 gap-6">
+          <div class="reveal glass rounded-[28px] p-8">
+            <h2 class="text-3xl sm:text-4xl font-semibold">Para quem é</h2>
+            <p class="mt-5 text-white/72 leading-relaxed">
               Ideal para perfis profissionais, LinkedIn, médicos, advogados, empresários, empreendedoras, palestrantes, consultores e marcas pessoais que precisam de uma imagem mais forte e profissional.
-            p
+            </p>
 
-            ul class=mt-6 space-y-3 text-white78
-              li• Retratos corporativos com linguagem premiumli
-              li• Direção de poses e expressãoli
-              li• Fotos para presença digital e autoridadeli
-              li• Conteúdo para empresas e profissionais liberaisli
-            ul
-          div
+            <ul class="mt-6 space-y-3 text-white/78">
+              <li>• Retratos corporativos com linguagem premium</li>
+              <li>• Direção de poses e expressão</li>
+              <li>• Fotos para presença digital e autoridade</li>
+              <li>• Conteúdo para empresas e profissionais liberais</li>
+            </ul>
+          </div>
 
-          div class=reveal glass rounded-[28px] p-8
-            h2 class=text-3xl smtext-4xl font-semiboldO que esse catálogo entregah2
-            p class=mt-5 text-white72 leading-relaxed
+          <div class="reveal glass rounded-[28px] p-8">
+            <h2 class="text-3xl sm:text-4xl font-semibold">O que esse catálogo entrega</h2>
+            <p class="mt-5 text-white/72 leading-relaxed">
               Uma seleção de imagens reais para mostrar como o ensaio pode valorizar imagem, estilo, postura e comunicação visual. O objetivo é fazer o cliente enxergar o nível do trabalho antes de pedir orçamento.
-            p
+            </p>
 
-            div class=mt-8
-              a href=httpswa.me559184218754text=Olá%20Everson,%20vi%20o%20catálogo%20corporativo%20e%20quero%20mais%20informações. target=_blank class=btn-white inline-flex rounded-full px-6 py-4 font-semibold
+            <div class="mt-8">
+              <a href="https://wa.me/559184218754?text=Olá%20Everson,%20vi%20o%20catálogo%20corporativo%20e%20quero%20mais%20informações." target="_blank" class="btn-white inline-flex rounded-full px-6 py-4 font-semibold">
                 Quero esse ensaio
-              a
-            div
-          div
-        div
-      div
-    section
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    section id=galeria class=pb-24
-      div class=mx-auto max-w-7xl px-6
-        div class=reveal mb-10
-          h2 class=text-4xl smtext-5xl font-semibold tracking-[-0.04em]
+    <section id="galeria" class="pb-24">
+      <div class="mx-auto max-w-7xl px-6">
+        <div class="reveal mb-10">
+          <h2 class="text-4xl sm:text-5xl font-semibold tracking-[-0.04em]">
             Catálogo Corporativo
-          h2
-          p class=mt-4 text-white70 text-lg
+          </h2>
+          <p class="mt-4 text-white/70 text-lg">
             Clique nas imagens para ampliar.
-          p
-        div
+          </p>
+        </div>
 
-        div class=galeria
-          img src=mediaprimeira.jpg alt=Ensaio corporativo 1 onclick=abrirImagem(this)
-          img src=mediasegunda.jpg alt=Ensaio corporativo 2 onclick=abrirImagem(this)
-          img src=mediaterceira.jpg alt=Ensaio corporativo 3 onclick=abrirImagem(this)
-          img src=mediaquarta.jpg alt=Ensaio corporativo 4 onclick=abrirImagem(this)
-          img src=mediaquinta.jpg alt=Ensaio corporativo 5 onclick=abrirImagem(this)
-          img src=mediasexta.jpg alt=Ensaio corporativo 6 onclick=abrirImagem(this)
-        div
-      div
-    section
+        <div class="galeria">
+          <img src="media/primeira.jpg" alt="Ensaio corporativo 1" onclick="abrirImagem(this)">
+          <img src="media/segunda.jpg" alt="Ensaio corporativo 2" onclick="abrirImagem(this)">
+          <img src="media/terceira.jpg" alt="Ensaio corporativo 3" onclick="abrirImagem(this)">
+          <img src="media/quarta.jpg" alt="Ensaio corporativo 4" onclick="abrirImagem(this)">
+          <img src="media/quinta.jpg" alt="Ensaio corporativo 5" onclick="abrirImagem(this)">
+          <img src="media/sexta.jpg" alt="Ensaio corporativo 6" onclick="abrirImagem(this)">
+        </div>
+      </div>
+    </section>
 
-    section id=contato class=pb-24
-      div class=mx-auto max-w-5xl px-6 text-center
-        div class=reveal glass rounded-[32px] px-6 py-14 smpx-10
-          p class=text-sm uppercase tracking-[0.22em] text-white55 mb-3
+    <section id="contato" class="pb-24">
+      <div class="mx-auto max-w-5xl px-6 text-center">
+        <div class="reveal glass rounded-[32px] px-6 py-14 sm:px-10">
+          <p class="text-sm uppercase tracking-[0.22em] text-white/55 mb-3">
             Orçamento
-          p
+          </p>
 
-          h2 class=text-4xl smtext-5xl lgtext-6xl font-semibold tracking-[-0.05em]
+          <h2 class="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-[-0.05em]">
             Vamos criar uma imagem que comunica valor.
-          h2
+          </h2>
 
-          p class=mt-5 text-white72 text-lg max-w-2xl mx-auto
+          <p class="mt-5 text-white/72 text-lg max-w-2xl mx-auto">
             Fale com Everson Araujo e receba informações sobre investimento, disponibilidade e formato do ensaio corporativo.
-          p
+          </p>
 
-          div class=mt-8 flex flex-col smflex-row justify-center gap-4
-            a href=httpswa.me559184218754text=Olá%20Everson,%20quero%20um%20orçamento%20para%20Ensaio%20Corporativo. target=_blank class=btn-white rounded-full px-8 py-4 font-semibold
+          <div class="mt-8 flex flex-col sm:flex-row justify-center gap-4">
+            <a href="https://wa.me/559184218754?text=Olá%20Everson,%20quero%20um%20orçamento%20para%20Ensaio%20Corporativo." target="_blank" class="btn-white rounded-full px-8 py-4 font-semibold">
               Solicitar orçamento
-            a
+            </a>
 
-            a href=index.html class=btn-dark rounded-full px-8 py-4 font-semibold
+            <a href="index.html" class="btn-dark rounded-full px-8 py-4 font-semibold">
               Voltar ao site principal
-            a
-          div
-        div
-      div
-    section
-  main
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-  footer class=border-t border-white10 py-8
-    div class=mx-auto max-w-7xl px-6 flex flex-col mdflex-row gap-4 items-center justify-between text-sm text-white55
-      div© 2026 Everson Araujo. Todos os direitos reservados.div
+  <footer class="border-t border-white/10 py-8">
+    <div class="mx-auto max-w-7xl px-6 flex flex-col md:flex-row gap-4 items-center justify-between text-sm text-white/55">
+      <div>© 2026 Everson Araujo. Todos os direitos reservados.</div>
 
-      div class=flex items-center gap-5
-        a href=index.html class=hovertext-white transitionSite principala
-        a href=httpswww.instagram.comeverson.fotografo target=_blank class=hovertext-white transitionInstagrama
-        a href=httpswa.me559184218754 target=_blank class=hovertext-white transitionWhatsAppa
-      div
-    div
-  footer
+      <div class="flex items-center gap-5">
+        <a href="index.html" class="text-white" style="text-decoration:none;">Site principal</a>
+        <a href="https://www.instagram.com/everson.fotografo/" target="_blank" class="text-white" style="text-decoration:none;">Instagram</a>
+        <a href="https://wa.me/559184218754" target="_blank" class="text-white" style="text-decoration:none;">WhatsApp</a>
+      </div>
+    </div>
+  </footer>
 
-  div id=lightbox onclick=fecharImagem()
-    img id=lightbox-img alt=Imagem ampliada
-  div
+  <div id="lightbox" onclick="fecharImagem()">
+    <img id="lightbox-img" alt="Imagem ampliada">
+  </div>
 
-  script
+  <script>
     function abrirImagem(img) {
-      document.getElementById(lightbox).style.display = flex;
-      document.getElementById(lightbox-img).src = img.src;
+      document.getElementById("lightbox").style.display = "flex";
+      document.getElementById("lightbox-img").src = img.src;
     }
 
     function fecharImagem() {
-      document.getElementById(lightbox).style.display = none;
+      document.getElementById("lightbox").style.display = "none";
     }
 
     gsap.registerPlugin(ScrollTrigger);
 
-    gsap.utils.toArray(.reveal).forEach((el) = {
+    gsap.utils.toArray(".reveal").forEach((el) => {
       gsap.to(el, {
-        scrollTrigger {
-          trigger el,
-          start top 86%
+        scrollTrigger: {
+          trigger: el,
+          start: "top 86%"
         },
-        opacity 1,
-        y 0,
-        duration 1
+        opacity: 1,
+        y: 0,
+        duration: 1
       });
     });
-  script
-body
-html
+  </script>
+</body>
+</html>
