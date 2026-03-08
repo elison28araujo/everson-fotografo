@@ -5,9 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Everson Araujo | Fotógrafo</title>
   <meta name="description" content="Everson Araujo, fotógrafo especializado em retratos corporativos, fashion, marca pessoal e campanhas publicitárias." />
-
   <script src="https://cdn.tailwindcss.com"></script>
-
   <script>
     tailwind.config = {
       theme: {
@@ -15,7 +13,7 @@
           colors: {
             base: '#000000',
             soft: '#0a0a0a',
-            panel: '#111111'
+            panel: '#111111',
           },
           boxShadow: {
             softxl: '0 20px 60px rgba(0,0,0,.45)'
@@ -24,304 +22,329 @@
       }
     }
   </script>
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Inter, sans-serif;
-      background: #000;
-    }
-
+    html { scroll-behavior: smooth; }
+    body { font-family: Inter, sans-serif; background: #000; }
     .glass {
       background: rgba(255,255,255,.035);
       border: 1px solid rgba(255,255,255,.10);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
     }
-
     .hero-overlay {
       background:
         linear-gradient(90deg, rgba(0,0,0,.46) 0%, rgba(0,0,0,.30) 40%, rgba(0,0,0,.12) 70%, rgba(0,0,0,.10) 100%),
         linear-gradient(180deg, rgba(0,0,0,.10) 0%, rgba(0,0,0,.62) 100%);
     }
-
+    .hero-face { object-position: 58% 12%; }
+    @media (max-width: 768px) { .hero-face { object-position: 43% 8%; } }
     .btn-white {
-      background: #fff;
-      color: #000;
-      transition: 0.3s;
+      background: #fff; color: #000; transition: all .28s ease;
     }
-
-    .btn-white:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 16px 34px rgba(255,255,255,.16);
-    }
-
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 16px 34px rgba(255,255,255,.16); }
     .btn-dark {
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.10); color: #fff; transition: all .28s ease;
     }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
+    .btn-dark:hover { background: rgba(255,255,255,.08); transform: translateY(-2px); }
+    .link-btn {
+      background: #fff; color: #000; transition: all .28s ease; border: 1px solid rgba(255,255,255,.08);
     }
-
+    .link-btn:hover { transform: translateY(-3px); box-shadow: 0 18px 45px rgba(255,255,255,.12); }
+    .card-hover { transition: transform .3s ease, background .3s ease, border-color .3s ease; }
+    .card-hover:hover { transform: translateY(-6px); background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.18); }
+    .reveal { opacity: 0; transform: translateY(30px); }
+    .fade-line { height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent); }
     .slider-shell {
       overflow: hidden;
+      mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
     }
-
-    .slider-track {
-      display: flex;
-      width: max-content;
-      gap: 1rem;
-      animation: slideLoop 24s linear infinite;
-    }
-
-    .slider-track:hover {
-      animation-play-state: paused;
-    }
-
-    .slide-card {
-      min-width: 300px;
-    }
-
-    @keyframes slideLoop {
-      from {
-        transform: translateX(0);
-      }
-      to {
-        transform: translateX(-50%);
-      }
-    }
-
-    /* GALERIA CORPORATIVA */
-    .galeria {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-    }
-
-    .galeria img {
-      width: 100%;
-      height: 420px;
-      object-fit: cover;
-      border-radius: 16px;
-      cursor: pointer;
-      transition: all .4s ease;
-      box-shadow: 0 10px 40px rgba(0,0,0,.5);
-    }
-
-    .galeria img:hover {
-      transform: scale(1.04);
-      box-shadow: 0 20px 60px rgba(0,0,0,.7);
-    }
-
-    /* LIGHTBOX */
-    #lightbox {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,.9);
-      align-items: center;
-      justify-content: center;
-      z-index: 999;
-      padding: 20px;
-    }
-
-    #lightbox img {
-      max-width: 90%;
-      max-height: 90%;
-      border-radius: 12px;
-    }
+    .slider-track { display: flex; width: max-content; gap: 1rem; animation: slideLoop 24s linear infinite; }
+    .slider-track:hover { animation-play-state: paused; }
+    .slide-card { min-width: 280px; }
+    @media (min-width: 768px) { .slide-card { min-width: 360px; } }
+    @keyframes slideLoop { from { transform: translateX(0); } to { transform: translateX(-50%); } }
   </style>
 </head>
-
-<body class="text-white">
+<body class="text-white selection:bg-white selection:text-black">
   <header class="fixed top-0 inset-x-0 z-50">
-    <div class="mx-auto max-w-7xl px-4 pt-4">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-4">
       <div class="glass rounded-full px-5 py-3 flex items-center justify-between">
-        <a href="#" class="text-xl font-semibold">Everson Araujo</a>
-
-        <nav class="hidden md:flex gap-6 text-sm text-white/70">
-          <a href="#links">Links</a>
-          <a href="#sobre">Sobre</a>
-          <a href="#portfolio">Portfólio</a>
-          <a href="#contato">Contato</a>
+        <a href="#topo" class="text-xl sm:text-2xl font-semibold tracking-tight">Everson Araujo</a>
+        <nav class="hidden md:flex items-center gap-7 text-sm text-white/75">
+          <a href="#links" class="hover:text-white transition">Links</a>
+          <a href="#sobre" class="hover:text-white transition">Sobre</a>
+          <a href="#portfolio" class="hover:text-white transition">Portfólio</a>
+          <a href="#contato" class="hover:text-white transition">Contato</a>
         </nav>
-
-        <a href="https://wa.me/559184218754" target="_blank"
-           class="btn-white rounded-full px-5 py-3 text-sm font-semibold">
-          Agendar Ensaio
-        </a>
+        <a href="https://wa.me/559184218754?text=Olá%20Everson%2C%20quero%20agendar%20um%20ensaio." target="_blank" class="btn-white rounded-full px-5 py-3 text-sm font-semibold">Agendar Ensaio</a>
       </div>
     </div>
   </header>
 
-  <section class="relative min-h-screen flex items-center overflow-hidden">
-    <img src="media/hero.jpg" class="absolute inset-0 w-full h-full object-cover" alt="Everson Araujo">
+  <main id="topo">
+    <section class="relative min-h-screen flex items-center overflow-hidden">
+      <img src="media/hero.jpg" alt="Everson Araujo em retrato profissional" class="hero-face absolute inset-0 w-full h-full object-cover scale-[1.02]" />
+      <div class="absolute inset-0 hero-overlay"></div>
 
-    <div class="absolute inset-0 hero-overlay"></div>
+      <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-32 pb-16 w-full">
+        <div class="max-w-3xl">
+          <p class="hero-item inline-flex items-center gap-2 glass rounded-full px-4 py-2 text-sm text-white/85 mb-6">
+            <span class="w-2 h-2 rounded-full bg-white"></span>
+            Fotógrafo | Retratos Corporativos & Fashion
+          </p>
 
-    <div class="relative z-10 mx-auto max-w-7xl px-4 pt-32 pb-16">
-      <h1 class="text-6xl font-semibold">
-        Everson Araujo
-      </h1>
+          <h1 class="hero-item text-5xl sm:text-6xl lg:text-8xl font-semibold leading-[0.95] tracking-[-0.05em]">
+            Everson Araujo
+          </h1>
 
-      <p class="mt-6 text-xl text-white/70">
-        Fotógrafo | Retratos Corporativos & Fashion
-      </p>
+          <p class="hero-item mt-5 text-2xl sm:text-3xl lg:text-4xl text-white/92 leading-tight tracking-[-0.03em]">
+            Fotógrafo | Retratos Corporativos & Fashion
+          </p>
 
-      <div class="mt-8 flex gap-4 flex-wrap">
-        <a href="#links" class="btn-white px-6 py-3 rounded-full font-semibold">
-          Ver Links
-        </a>
+          <p class="hero-item mt-4 text-lg sm:text-xl text-white/75">
+            📍 Base em São Paulo
+          </p>
 
-        <a href="mentoria.html" class="btn-white px-6 py-3 rounded-full font-semibold">
-          Mentoria Workshop
-        </a>
+          <div class="hero-item mt-9 flex flex-col sm:flex-row gap-4">
+            <a href="#links" class="btn-white rounded-full px-7 py-4 text-center font-semibold">Ver principais links</a>
+            <a href="mentoria.html" class="btn-white rounded-full px-7 py-4 text-center font-semibold">Mentoria Workshop</a>
+            <a href="https://wa.me/559184218754?text=Olá%20Everson%2C%20quero%20falar%20sobre%20um%20ensaio." target="_blank" class="btn-dark rounded-full px-7 py-4 text-center font-semibold">Falar no WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="links" class="py-24 sm:py-28 bg-black">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <div class="reveal text-center max-w-3xl mx-auto mb-12">
+          <h2 class="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-[-0.05em]">Escolha o que você procura</h2>
+          <p class="mt-4 text-white/72 text-lg">Uma estrutura direta para separar clientes corporativos, editorial/fashion, mentoria e quem já quer agendar agora.</p>
+        </div>
+
+        <div class="grid gap-4">
+          <a href="#corporativo" class="reveal link-btn rounded-[24px] px-6 py-5 sm:px-8 sm:py-6 flex items-center justify-between">
+            <div class="text-left">
+              <div class="text-xl sm:text-2xl font-bold">Ensaio Corporativo | Posicionamento de Imagem</div>
+              <div class="mt-2 text-black/70">Página explicando o ensaio, exemplos de fotos e acesso rápido ao WhatsApp.</div>
+            </div>
+            <div class="text-2xl font-bold">→</div>
+          </a>
+
+          <a href="#fashion" class="reveal link-btn rounded-[24px] px-6 py-5 sm:px-8 sm:py-6 flex items-center justify-between">
+            <div class="text-left">
+              <div class="text-xl sm:text-2xl font-bold">Editorial | Fashion</div>
+              <div class="mt-2 text-black/70">Portfólio com trabalhos de moda, editorial e linguagem visual premium.</div>
+            </div>
+            <div class="text-2xl font-bold">→</div>
+          </a>
+
+          <a href="mentoria.html" class="reveal link-btn rounded-[24px] px-6 py-5 sm:px-8 sm:py-6 flex items-center justify-between">
+            <div class="text-left">
+              <div class="text-xl sm:text-2xl font-bold">Mentoria Workshop | O Poder da Luz</div>
+              <div class="mt-2 text-black/70">Página de vendas da mentoria com workshop, prática, bastidores e CTA direto.</div>
+            </div>
+            <div class="text-2xl font-bold">→</div>
+          </a>
+
+          <a href="https://wa.me/559184218754?text=Olá%20Everson%2C%20quero%20agendar%20um%20ensaio." target="_blank" class="reveal link-btn rounded-[24px] px-6 py-5 sm:px-8 sm:py-6 flex items-center justify-between">
+            <div class="text-left">
+              <div class="text-xl sm:text-2xl font-bold">Agendar Ensaio</div>
+              <div class="mt-2 text-black/70">Direto para WhatsApp com CTA focado em conversão.</div>
+            </div>
+            <div class="text-2xl font-bold">→</div>
+          </a>
+
+          <a href="https://www.instagram.com/everson.fotografo/" target="_blank" class="reveal link-btn rounded-[24px] px-6 py-5 sm:px-8 sm:py-6 flex items-center justify-between">
+            <div class="text-left">
+              <div class="text-xl sm:text-2xl font-bold">Instagram Oficial</div>
+              <div class="mt-2 text-black/70">Veja o feed, os trabalhos e acompanhe o universo visual do fotógrafo.</div>
+            </div>
+            <div class="text-2xl font-bold">→</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre" class="py-24 sm:py-28 border-t border-white/10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <div class="reveal">
+            <h2 class="text-5xl sm:text-6xl lg:text-7xl font-light tracking-[-0.05em]">Everson Araujo</h2>
+            <p class="mt-4 text-2xl sm:text-3xl italic text-white/85 max-w-xl">
+              Bacharel em Direito e fotógrafo desde <strong>2018</strong>.
+            </p>
+
+            <div class="fade-line my-8"></div>
+
+            <div class="space-y-8 text-2xl sm:text-[2rem] leading-[1.4] italic text-white/90">
+              <p>
+                A fotografia entrou na minha vida de forma inesperada. Tudo começou quando fiz algumas fotos de celular para uma amiga que ia fazer 15 anos. Postamos. E os elogios vieram.
+              </p>
+
+              <p class="font-semibold">
+                Ali, sem pretensão nenhuma, nasceu uma paixão.
+              </p>
+
+              <p>
+                Hoje, sou <strong>especialista em campanhas publicitárias</strong>, ensaios de marca pessoal e reposicionamento de imagem — áreas onde consigo unir <strong>minha paixão</strong> por tudo que envolve <strong>imagem e comunicação</strong>.
+              </p>
+
+              <p>
+                Ao longo dessa jornada, aprendi que a imagem se constrói através da luz — não apenas a que ilumina o cenário, mas a que revela intenção, identidade e propósito. É a luz que direciona o olhar, cria emoção e transforma uma simples fotografia em comunicação estratégica.
+              </p>
+            </div>
+          </div>
+
+          <div class="reveal">
+            <img src="media/sobre.jpg" alt="Retrato de Everson Araujo sentado" class="w-full rounded-[28px] border border-white/10 shadow-softxl" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="corporativo" class="py-24 sm:py-28 border-t border-white/10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="reveal max-w-3xl mb-12">
+          <p class="text-white/60 uppercase tracking-[0.24em] text-xs mb-3">Posicionamento</p>
+          <h2 class="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-[-0.05em]">Ensaio Corporativo | Posicionamento de Imagem</h2>
+          <p class="mt-4 text-white/72 text-lg">Fotografia pensada para profissionais, executivos, empreendedores e marcas que querem comunicar autoridade, sofisticação e credibilidade.</p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-5">
+          <div class="reveal glass rounded-[28px] p-8 card-hover">
+            <h3 class="text-2xl font-semibold">Para quem é</h3>
+            <p class="mt-4 text-white/72 leading-relaxed">Ideal para perfis profissionais, LinkedIn, materiais institucionais, campanhas, branding pessoal e reposicionamento de imagem.</p>
+            <ul class="mt-6 space-y-3 text-white/78">
+              <li>• Retratos corporativos com linguagem premium</li>
+              <li>• Direção de poses e expressão</li>
+              <li>• Fotos para presença digital e autoridade</li>
+              <li>• Conteúdo para empresas e profissionais liberais</li>
+            </ul>
+            <a href="https://wa.me/p/4874607632575156/559184218754" target="_blank" class="mt-8 inline-flex btn-white rounded-full px-6 py-4 font-semibold">Ver catálogo relacionado</a>
+          </div>
+
+          <div class="reveal rounded-[28px] overflow-hidden border border-white/10 min-h-[480px] relative">
+            <img src="media/sobre.jpg" alt="Imagem corporativa de Everson Araujo" class="absolute inset-0 w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent"></div>
+            <div class="absolute bottom-0 p-8">
+              <div class="text-sm uppercase tracking-[0.22em] text-white/70 mb-3">Conversão direta</div>
+              <h3 class="text-3xl sm:text-4xl font-semibold max-w-lg">Fotos que fortalecem sua imagem e aumentam sua percepção de valor.</h3>
+              <a href="https://wa.me/559184218754?text=Olá%20Everson%2C%20quero%20um%20ensaio%20corporativo." target="_blank" class="mt-6 inline-flex btn-white rounded-full px-6 py-4 font-semibold">Solicitar orçamento</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="fashion" class="py-24 sm:py-28 border-t border-white/10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="reveal max-w-3xl mb-12">
+          <p class="text-white/60 uppercase tracking-[0.24em] text-xs mb-3">Editorial</p>
+          <h2 class="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-[-0.05em]">Editorial | Fashion</h2>
+          <p class="mt-4 text-white/72 text-lg">Uma estética clean e premium em preto e branco para transmitir fotografia autoral, moda e posicionamento de alto nível.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5" id="portfolio">
+          <article class="reveal rounded-[28px] overflow-hidden border border-white/10 relative min-h-[440px]">
+            <img src="media/hero.jpg" alt="Editorial fashion de Everson Araujo" class="absolute inset-0 w-full h-full object-cover object-top" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6">
+              <div class="text-sm uppercase tracking-[0.22em] text-white/70">Fashion</div>
+              <h3 class="text-3xl font-semibold mt-2">Retratos com presença</h3>
+            </div>
+          </article>
+
+          <article class="reveal rounded-[28px] overflow-hidden border border-white/10 relative min-h-[440px]">
+            <img src="media/sobre.jpg" alt="Retrato editorial de Everson Araujo" class="absolute inset-0 w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6">
+              <div class="text-sm uppercase tracking-[0.22em] text-white/70">Editorial</div>
+              <h3 class="text-3xl font-semibold mt-2">Imagem sofisticada</h3>
+            </div>
+          </article>
+
+          <article class="reveal glass rounded-[28px] p-8 card-hover flex flex-col justify-between">
+            <div>
+              <div class="text-sm uppercase tracking-[0.22em] text-white/60 mb-3">Portfólio e catálogo</div>
+              <h3 class="text-3xl font-semibold">Moda, editorial e direção visual</h3>
+              <p class="mt-4 text-white/72 leading-relaxed">A proposta visual trabalha contraste, limpeza estética e posicionamento premium para campanhas, editoriais e marca pessoal.</p>
+            </div>
+            <div class="mt-8 flex flex-col gap-3">
+              <a href="https://wa.me/p/9641645492577043/559184218754" target="_blank" class="btn-white rounded-full px-6 py-4 font-semibold text-center">Ver catálogo</a>
+              <a href="https://wa.me/559184218754?text=Olá%20Everson%2C%20quero%20um%20orçamento%20para%20Editorial%20e%20Fashion." target="_blank" class="btn-dark rounded-full px-6 py-4 font-semibold text-center">Pedir orçamento</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 sm:py-28 border-t border-white/10 bg-black">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="reveal flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10">
+          <div class="max-w-2xl">
+            <p class="text-white/60 uppercase tracking-[0.24em] text-xs mb-3">Instagram</p>
+            <h2 class="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-[-0.05em]">Slide visual inspirado no feed</h2>
+          </div>
+          <p class="max-w-xl text-white/70">Visual corrido para reforçar autoridade estética e incentivar o clique no perfil oficial.</p>
+        </div>
+
+        <div class="reveal slider-shell">
+          <div class="slider-track">
+            <a href="https://www.instagram.com/everson.fotografo/" target="_blank" class="slide-card aspect-[4/5] rounded-[28px] overflow-hidden border border-white/10 relative shrink-0"><img src="media/hero.jpg" alt="Retrato profissional" class="w-full h-full object-cover object-top"><div class="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent"></div></a>
+            <a href="https://www.instagram.com/everson.fotografo/" target="_blank" class="slide-card aspect-[4/5] rounded-[28px] overflow-hidden border border-white/10 relative shrink-0"><img src="media/sobre.jpg" alt="Marca pessoal" class="w-full h-full object-cover"><div class="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent"></div></a>
+            <a href="https://www.instagram.com/everson.fotografo/" target="_blank" class="slide-card aspect-[4/5] rounded-[28px] overflow-hidden border border-white/10 relative shrink-0"><img src="media/hero.jpg" alt="Editorial premium" class="w-full h-full object-cover object-top"><div class="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent"></div></a>
+            <a href="https://www.instagram.com/everson.fotografo/" target="_blank" class="slide-card aspect-[4/5] rounded-[28px] overflow-hidden border border-white/10 relative shrink-0"><img src="media/sobre.jpg" alt="Retrato clean" class="w-full h-full object-cover"><div class="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent"></div></a>
+            <a href="https://www.instagram.com/everson.fotografo/" target="_blank" class="slide-card aspect-[4/5] rounded-[28px] overflow-hidden border border-white/10 relative shrink-0"><img src="media/hero.jpg" alt="Fashion" class="w-full h-full object-cover object-top"><div class="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent"></div></a>
+            <a href="https://www.instagram.com/everson.fotografo/" target="_blank" class="slide-card aspect-[4/5] rounded-[28px] overflow-hidden border border-white/10 relative shrink-0"><img src="media/sobre.jpg" alt="Posicionamento" class="w-full h-full object-cover"><div class="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent"></div></a>
+            <a href="https://www.instagram.com/everson.fotografo/" target="_blank" class="slide-card aspect-[4/5] rounded-[28px] overflow-hidden border border-white/10 relative shrink-0"><img src="media/hero.jpg" alt="Retrato profissional" class="w-full h-full object-cover object-top"><div class="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent"></div></a>
+            <a href="https://www.instagram.com/everson.fotografo/" target="_blank" class="slide-card aspect-[4/5] rounded-[28px] overflow-hidden border border-white/10 relative shrink-0"><img src="media/sobre.jpg" alt="Marca pessoal" class="w-full h-full object-cover"><div class="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent"></div></a>
+          </div>
+        </div>
+
+        <div class="reveal mt-8">
+          <a href="https://www.instagram.com/everson.fotografo/" target="_blank" class="btn-white inline-flex rounded-full px-7 py-4 font-semibold">Abrir Instagram</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato" class="py-24 sm:py-28 border-t border-white/10">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="reveal glass rounded-[32px] p-8 sm:p-12 text-center">
+          <p class="text-white/60 uppercase tracking-[0.24em] text-xs mb-3">Contato</p>
+          <h2 class="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-[-0.05em]">Vamos construir uma imagem que comunica.</h2>
+          <p class="mt-5 text-white/72 text-lg max-w-2xl mx-auto">WhatsApp atualizado: <strong class="text-white">+55 91 8421-8754</strong>. Atendimento para retratos corporativos, fashion, campanhas publicitárias e marca pessoal.</p>
+          <div class="mt-8 flex flex-col sm:flex-row justify-center gap-4">
+            <a href="https://wa.me/559184218754?text=Olá%20Everson%2C%20quero%20agendar%20um%20ensaio." target="_blank" class="btn-white rounded-full px-8 py-4 font-semibold">Agendar Ensaio</a>
+            <a href="https://wa.me/559184218754?text=Olá%20Everson%2C%20quero%20mais%20informações." target="_blank" class="btn-dark rounded-full px-8 py-4 font-semibold">Pedir informações</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/10 py-8">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row gap-4 items-center justify-between text-sm text-white/55">
+      <div>© 2026 Everson Araujo. Todos os direitos reservados.</div>
+      <div class="flex items-center gap-5">
+        <a href="https://www.instagram.com/everson.fotografo/" target="_blank" class="hover:text-white transition">Instagram</a>
+        <a href="https://wa.me/559184218754" target="_blank" class="hover:text-white transition">WhatsApp</a>
       </div>
     </div>
-  </section>
-
-  <section id="links" class="py-24">
-    <div class="max-w-4xl mx-auto text-center px-4">
-      <h2 class="text-5xl font-semibold mb-12">
-        Escolha o que você procura
-      </h2>
-
-      <div class="grid gap-4">
-        <a href="#corporativo" class="btn-white py-6 rounded-xl text-xl">
-          Ensaio Corporativo
-        </a>
-
-        <a href="#fashion" class="btn-white py-6 rounded-xl text-xl">
-          Editorial Fashion
-        </a>
-
-        <a href="mentoria.html" class="btn-white py-6 rounded-xl text-xl">
-          Mentoria Workshop
-        </a>
-
-        <a href="https://www.instagram.com/everson.fotografo/" target="_blank"
-           class="btn-white py-6 rounded-xl text-xl">
-          Instagram
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section id="corporativo" class="py-24">
-    <div class="max-w-7xl mx-auto px-6">
-      <h2 class="text-5xl mb-10 text-center">
-        Ensaio Corporativo
-      </h2>
-
-      <div class="galeria">
-        <img src="media/primeira.jpg" alt="Ensaio corporativo 1" onclick="abrirImagem(this)">
-        <img src="media/segunda.jpg" alt="Ensaio corporativo 2" onclick="abrirImagem(this)">
-        <img src="media/terceira.jpg" alt="Ensaio corporativo 3" onclick="abrirImagem(this)">
-        <img src="media/quarta.jpg" alt="Ensaio corporativo 4" onclick="abrirImagem(this)">
-        <img src="media/quinta.jpg" alt="Ensaio corporativo 5" onclick="abrirImagem(this)">
-        <img src="media/sexta.jpg" alt="Ensaio corporativo 6" onclick="abrirImagem(this)">
-      </div>
-    </div>
-  </section>
-
-  <section id="sobre" class="py-24">
-    <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center px-6">
-      <div>
-        <h2 class="text-6xl font-light">
-          Everson Araujo
-        </h2>
-
-        <p class="mt-6 text-xl text-white/70">
-          Bacharel em Direito e fotógrafo desde 2018.
-          <br><br>
-          Especialista em campanhas publicitárias,
-          marca pessoal e posicionamento de imagem.
-        </p>
-      </div>
-
-      <div>
-        <img src="media/sobre.jpg" alt="Sobre Everson Araujo"
-             class="rounded-3xl border border-white/10">
-      </div>
-    </div>
-  </section>
-
-  <section id="portfolio" class="py-24">
-    <div class="max-w-7xl mx-auto px-6">
-      <h2 class="text-5xl mb-10">
-        Portfólio
-      </h2>
-
-      <div class="grid md:grid-cols-3 gap-6">
-        <img src="media/hero.jpg" class="rounded-2xl" alt="Portfólio 1">
-        <img src="media/sobre.jpg" class="rounded-2xl" alt="Portfólio 2">
-        <img src="media/hero.jpg" class="rounded-2xl" alt="Portfólio 3">
-      </div>
-    </div>
-  </section>
-
-  <section id="contato" class="py-24">
-    <div class="max-w-4xl mx-auto text-center px-4">
-      <h2 class="text-5xl mb-8">
-        Vamos construir uma imagem que comunica
-      </h2>
-
-      <p class="text-white/70 mb-8">
-        WhatsApp: +55 91 8421-8754
-      </p>
-
-      <a href="https://wa.me/559184218754"
-         class="btn-white px-8 py-4 rounded-full font-semibold">
-        Agendar Ensaio
-      </a>
-    </div>
-  </section>
-
-  <footer class="py-10 text-center text-white/50">
-    © 2026 Everson Araujo
   </footer>
 
-  <div id="lightbox" onclick="fecharImagem()">
-    <img id="lightbox-img" alt="Imagem ampliada">
-  </div>
-
   <script>
-    function abrirImagem(img) {
-      document.getElementById("lightbox").style.display = "flex";
-      document.getElementById("lightbox-img").src = img.src;
-    }
-
-    function fecharImagem() {
-      document.getElementById("lightbox").style.display = "none";
-    }
-
     gsap.registerPlugin(ScrollTrigger);
-
+    gsap.from(".hero-item", { y: 40, opacity: 0, duration: 1.0, stagger: 0.14, ease: "power3.out", delay: 0.2 });
     gsap.utils.toArray(".reveal").forEach((el) => {
       gsap.to(el, {
-        scrollTrigger: {
-          trigger: el,
-          start: "top 86%"
-        },
-        opacity: 1,
-        y: 0,
-        duration: 1
+        scrollTrigger: { trigger: el, start: "top 86%", toggleActions: "play none none reverse" },
+        y: 0, opacity: 1, duration: 0.9, ease: "power3.out"
       });
     });
   </script>
