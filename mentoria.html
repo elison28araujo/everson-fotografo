@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mentoria Workshop | O Poder da Luz</title>
+  <meta name="description" content="Mentoria e workshop com Everson Araujo para fotógrafos que querem dominar luz, direção e posicionamento profissional." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            base: '#050505',
+            soft: '#0b0b0b',
+            card: '#111111',
+            gold: '#d8d8d8'
+          },
+          boxShadow: {
+            glow: '0 25px 80px rgba(0,0,0,.45)'
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: Inter, sans-serif; background: #050505; }
+    .glass {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.10);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .hero-overlay {
+      background:
+        linear-gradient(90deg, rgba(5,5,5,.86) 0%, rgba(5,5,5,.55) 40%, rgba(5,5,5,.18) 75%, rgba(5,5,5,.15) 100%),
+        linear-gradient(180deg, rgba(5,5,5,.10), rgba(5,5,5,.72));
+    }
+    .btn-primary {
+      background: #fff;
+      color: #000;
+      transition: all .28s ease;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 18px 40px rgba(255,255,255,.12); }
+    .btn-secondary {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.10);
+      color: #fff;
+      transition: all .28s ease;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,.09); transform: translateY(-2px); }
+    .reveal { opacity: 0; transform: translateY(30px); }
+    .card-hover { transition: transform .3s ease, border-color .3s ease, background .3s ease; }
+    .card-hover:hover { transform: translateY(-6px); border-color: rgba(255,255,255,.18); background: rgba(255,255,255,.055); }
+    .grid-masonry { column-count: 1; column-gap: 1rem; }
+    .grid-masonry > * { break-inside: avoid; margin-bottom: 1rem; }
+    @media (min-width: 768px) { .grid-masonry { column-count: 2; } }
+    @media (min-width: 1100px) { .grid-masonry { column-count: 3; } }
+    .badge {
+      display: inline-flex; align-items: center; gap: .5rem; padding: .65rem 1rem; border-radius: 999px;
+      background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.10);
+    }
+  </style>
+</head>
+<body class="text-white selection:bg-white selection:text-black">
+  <header class="fixed top-0 inset-x-0 z-50">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-4">
+      <div class="glass rounded-full px-5 py-3 flex items-center justify-between">
+        <a href="index.html" class="text-xl sm:text-2xl font-semibold tracking-tight">Everson Araujo</a>
+        <nav class="hidden md:flex items-center gap-7 text-sm text-white/75">
+          <a href="#sobre" class="hover:text-white transition">Sobre</a>
+          <a href="#modulos" class="hover:text-white transition">Conteúdo</a>
+          <a href="#galeria" class="hover:text-white transition">Workshop</a>
+          <a href="#cta" class="hover:text-white transition">Inscrição</a>
+        </nav>
+        <a href="https://wa.me/559184218754?text=Olá%20Everson%2C%20quero%20informações%20sobre%20a%20Mentoria%20Workshop." target="_blank" class="btn-primary rounded-full px-5 py-3 text-sm font-semibold">Quero participar</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="relative min-h-screen flex items-center overflow-hidden">
+      <img src="media/workshop_10.jpg" alt="Workshop O Poder da Luz" class="absolute inset-0 w-full h-full object-cover object-center" />
+      <div class="absolute inset-0 hero-overlay"></div>
+
+      <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-32 pb-20 w-full">
+        <div class="max-w-4xl">
+          <div class="hero-item badge text-sm text-white/85 mb-6">
+            <span class="w-2 h-2 rounded-full bg-white"></span>
+            Mentoria Workshop • O Poder da Luz
+          </div>
+
+          <h1 class="hero-item text-5xl sm:text-6xl lg:text-8xl font-semibold leading-[0.94] tracking-[-0.05em] max-w-5xl">
+            Domine a luz para criar imagens de impacto e elevar o valor do seu trabalho.
+          </h1>
+
+          <p class="hero-item mt-6 max-w-3xl text-lg sm:text-xl text-white/76 leading-relaxed">
+            Uma experiência prática, visual e estratégica para fotógrafos que querem sair do comum, dominar leitura de luz, direção e posicionamento profissional.
+          </p>
+
+          <div class="hero-item mt-9 flex flex-col sm:flex-row gap-4">
+            <a href="https://wa.me/559184218754?text=Olá%20Everson%2C%20quero%20me%20inscrever%20na%20Mentoria%20Workshop%20O%20Poder%20da%20Luz." target="_blank" class="btn-primary rounded-full px-8 py-4 text-center font-semibold">Quero entrar na mentoria</a>
+            <a href="#galeria" class="btn-secondary rounded-full px-8 py-4 text-center font-semibold">Ver bastidores do workshop</a>
+          </div>
+
+          <div class="hero-item mt-10 flex flex-wrap gap-3 text-sm text-white/72">
+            <span class="badge">Leitura de luz</span>
+            <span class="badge">Prática fotográfica</span>
+            <span class="badge">Direção e resultado</span>
+            <span class="badge">Posicionamento profissional</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 border-y border-white/10 bg-white/[0.02]">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="reveal grid md:grid-cols-4 gap-5">
+          <div class="glass rounded-[26px] p-7 card-hover">
+            <div class="text-3xl font-semibold">Prática</div>
+            <p class="mt-2 text-white/68">Aprendizado aplicado na hora com direção real.</p>
+          </div>
+          <div class="glass rounded-[26px] p-7 card-hover">
+            <div class="text-3xl font-semibold">Luz</div>
+            <p class="mt-2 text-white/68">Leitura, controle e uso estratégico da iluminação.</p>
+          </div>
+          <div class="glass rounded-[26px] p-7 card-hover">
+            <div class="text-3xl font-semibold">Impacto</div>
+            <p class="mt-2 text-white/68">Resultados visuais que diferenciam o amador do profissional.</p>
+          </div>
+          <div class="glass rounded-[26px] p-7 card-hover">
+            <div class="text-3xl font-semibold">Mercado</div>
+            <p class="mt-2 text-white/68">Conhecimento que aumenta valor percebido e posicionamento.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre" class="py-24 sm:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-center">
+        <div class="reveal">
+          <p class="text-white/60 uppercase tracking-[0.22em] text-xs mb-3">A mentoria</p>
+          <h2 class="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-[-0.05em]">Não é só técnica. É visão, leitura e controle para criar impacto.</h2>
+          <p class="mt-6 text-white/74 text-lg leading-relaxed">
+            Muita gente acha que luz é só técnica. Mas a luz é o que separa o comum do profissional. Nesta mentoria, Everson Araujo mostra como ler, controlar e usar a luz para transformar resultado, presença visual e valor de mercado.
+          </p>
+          <p class="mt-5 text-white/70 leading-relaxed">
+            O foco não é só apertar botão. É aprender a construir imagem com intenção, dominar direção e entender como fotografia se torna comunicação estratégica.
+          </p>
+        </div>
+        <div class="reveal rounded-[32px] overflow-hidden border border-white/10 shadow-glow">
+          <img src="media/workshop_08.jpg" alt="Mentoria workshop de fotografia" class="w-full h-full object-cover" />
+        </div>
+      </div>
+    </section>
+
+    <section id="modulos" class="py-24 sm:py-28 border-t border-white/10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="reveal max-w-3xl mb-12">
+          <p class="text-white/60 uppercase tracking-[0.22em] text-xs mb-3">O que você aprende</p>
+          <h2 class="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-[-0.05em]">Conteúdo pensado para mudar resultado e posicionamento.</h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-5">
+          <article class="reveal glass rounded-[28px] p-7 card-hover">
+            <div class="text-sm uppercase tracking-[0.20em] text-white/55 mb-4">01</div>
+            <h3 class="text-2xl font-semibold">O poder da luz</h3>
+            <p class="mt-4 text-white/70">Como interpretar a luz, entender direção, intensidade e contraste para construir imagem com intenção.</p>
+          </article>
+          <article class="reveal glass rounded-[28px] p-7 card-hover">
+            <div class="text-sm uppercase tracking-[0.20em] text-white/55 mb-4">02</div>
+            <h3 class="text-2xl font-semibold">Prática orientada</h3>
+            <p class="mt-4 text-white/70">Aplicação real com modelo, ajustes em tempo real e leitura técnica transformada em resultado visual.</p>
+          </article>
+          <article class="reveal glass rounded-[28px] p-7 card-hover">
+            <div class="text-sm uppercase tracking-[0.20em] text-white/55 mb-4">03</div>
+            <h3 class="text-2xl font-semibold">Direção e impacto</h3>
+            <p class="mt-4 text-white/70">Como dirigir pessoas, corrigir detalhes e fazer a foto comunicar mais valor.</p>
+          </article>
+          <article class="reveal glass rounded-[28px] p-7 card-hover">
+            <div class="text-sm uppercase tracking-[0.20em] text-white/55 mb-4">04</div>
+            <h3 class="text-2xl font-semibold">Mercado e valor</h3>
+            <p class="mt-4 text-white/70">Como conhecimento técnico eleva seu posicionamento, sua percepção profissional e seu preço.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 sm:py-28 border-t border-white/10 bg-white/[0.02]">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="reveal max-w-3xl mb-12">
+          <p class="text-white/60 uppercase tracking-[0.22em] text-xs mb-3">Para quem é</p>
+          <h2 class="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-[-0.05em]">Para fotógrafos que querem sair do básico e alcançar um nível profissional.</h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-5">
+          <div class="reveal glass rounded-[28px] p-8 card-hover">
+            <h3 class="text-2xl font-semibold">Você vai se identificar se quer:</h3>
+            <ul class="mt-5 space-y-3 text-white/72">
+              <li>• Entender luz de forma prática e aplicada</li>
+              <li>• Melhorar o resultado das suas fotos</li>
+              <li>• Dirigir pessoas com mais confiança</li>
+              <li>• Valorizar sua entrega e cobrar melhor</li>
+              <li>• Ter mais clareza técnica e estética</li>
+            </ul>
+          </div>
+          <div class="reveal glass rounded-[28px] p-8 card-hover">
+            <h3 class="text-2xl font-semibold">Você sai com:</h3>
+            <ul class="mt-5 space-y-3 text-white/72">
+              <li>• Visão mais refinada sobre imagem</li>
+              <li>• Segurança para usar luz a seu favor</li>
+              <li>• Repertório prático de direção e leitura</li>
+              <li>• Mais percepção de valor profissional</li>
+              <li>• Um novo olhar sobre fotografia e mercado</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="galeria" class="py-24 sm:py-28 border-t border-white/10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="reveal max-w-3xl mb-12">
+          <p class="text-white/60 uppercase tracking-[0.22em] text-xs mb-3">Bastidores reais</p>
+          <h2 class="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-[-0.05em]">Workshop em prática: direção, observação, conexão e crescimento.</h2>
+          <p class="mt-4 text-white/72 text-lg">As imagens abaixo mostram a experiência do workshop e reforçam o que o aluno vive durante a mentoria.</p>
+        </div>
+
+        <div class="grid-masonry">
+          <img src="media/workshop_01.jpg" alt="Workshop imagem 1" class="reveal w-full rounded-[26px] border border-white/10" />
+          <img src="media/workshop_02.jpg" alt="Workshop imagem 2" class="reveal w-full rounded-[26px] border border-white/10" />
+          <video src="media/workshop_03.mp4" controls playsinline class="reveal w-full rounded-[26px] border border-white/10 bg-black"></video>
+          <img src="media/workshop_04.jpg" alt="Workshop imagem 4" class="reveal w-full rounded-[26px] border border-white/10" />
+          <img src="media/workshop_05.jpg" alt="Workshop imagem 5" class="reveal w-full rounded-[26px] border border-white/10" />
+          <img src="media/workshop_06.jpg" alt="Workshop imagem 6" class="reveal w-full rounded-[26px] border border-white/10" />
+          <img src="media/workshop_07.jpg" alt="Workshop imagem 7" class="reveal w-full rounded-[26px] border border-white/10" />
+          <img src="media/workshop_08.jpg" alt="Workshop imagem 8" class="reveal w-full rounded-[26px] border border-white/10" />
+          <img src="media/workshop_09.jpg" alt="Workshop imagem 9" class="reveal w-full rounded-[26px] border border-white/10" />
+          <img src="media/workshop_10.jpg" alt="Workshop imagem 10" class="reveal w-full rounded-[26px] border border-white/10" />
+          <img src="media/workshop_11.jpg" alt="Workshop imagem 11" class="reveal w-full rounded-[26px] border border-white/10" />
+          <video src="media/workshop_12.mp4" controls playsinline class="reveal w-full rounded-[26px] border border-white/10 bg-black"></video>
+          <video src="media/workshop_13.mp4" controls playsinline class="reveal w-full rounded-[26px] border border-white/10 bg-black"></video>
+        </div>
+      </div>
+    </section>
+
+    <section id="cta" class="py-24 sm:py-28 border-t border-white/10 bg-white/[0.02]">
+      <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
+        <div class="reveal glass rounded-[36px] px-6 py-14 sm:px-10">
+          <p class="text-white/60 uppercase tracking-[0.22em] text-xs mb-3">Inscrição</p>
+          <h2 class="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-[-0.05em]">Se a luz muda o resultado, seu próximo nível começa aqui.</h2>
+          <p class="mt-5 text-white/72 text-lg max-w-3xl mx-auto">Fale com Everson Araujo e receba informações sobre a próxima turma, formato, investimento e como participar da Mentoria Workshop.</p>
+          <div class="mt-8 flex flex-col sm:flex-row justify-center gap-4">
+            <a href="https://wa.me/559184218754?text=Olá%20Everson%2C%20quero%20informações%20sobre%20a%20Mentoria%20Workshop%20O%20Poder%20da%20Luz." target="_blank" class="btn-primary rounded-full px-8 py-4 font-semibold">Quero informações da mentoria</a>
+            <a href="index.html" class="btn-secondary rounded-full px-8 py-4 font-semibold">Voltar ao site principal</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/10 py-8">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row gap-4 items-center justify-between text-sm text-white/55">
+      <div>© 2026 Everson Araujo. Todos os direitos reservados.</div>
+      <div class="flex items-center gap-5">
+        <a href="index.html" class="hover:text-white transition">Site principal</a>
+        <a href="https://www.instagram.com/everson.fotografo/" target="_blank" class="hover:text-white transition">Instagram</a>
+        <a href="https://wa.me/559184218754" target="_blank" class="hover:text-white transition">WhatsApp</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.from(".hero-item", { y: 40, opacity: 0, duration: 1.0, stagger: 0.14, ease: "power3.out", delay: 0.2 });
+    gsap.utils.toArray(".reveal").forEach((el) => {
+      gsap.to(el, {
+        scrollTrigger: { trigger: el, start: "top 88%", toggleActions: "play none none reverse" },
+        y: 0, opacity: 1, duration: 0.9, ease: "power3.out"
+      });
+    });
+  </script>
+</body>
+</html>
