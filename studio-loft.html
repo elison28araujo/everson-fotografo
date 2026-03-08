@@ -1,253 +1,426 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Studio Loft | Seu Espaço Criativo</title>
+  <meta name="description" content="Studio Loft, um espaço criativo versátil pensado para ensaios, produções, conteúdo e experiências visuais premium.">
 
-<title>Studio Loft | Seu espaço criativo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 
-<script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            base: '#0a0a0a',
+            panel: '#121212',
+            line: 'rgba(255,255,255,0.10)',
+            sand: '#d7c9bc',
+            brown: '#8b5e3c',
+            cream: '#f3ece5'
+          },
+          boxShadow: {
+            softxl: '0 20px 60px rgba(0,0,0,.40)'
+          }
+        }
+      }
+    }
+  </script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
 
-<style>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
 
-body{
-font-family:Inter,sans-serif;
-background:#000;
-color:white;
-}
+    body {
+      font-family: Inter, sans-serif;
+      background: #0a0a0a;
+      color: white;
+    }
 
-.btn{
-background:white;
-color:black;
-padding:14px 28px;
-border-radius:999px;
-font-weight:600;
-transition:.3s;
-}
+    .title-font {
+      font-family: "Cormorant Garamond", serif;
+    }
 
-.btn:hover{
-transform:translateY(-2px);
-}
+    .glass {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.10);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
 
-.section{
-padding:110px 20px;
-}
+    .hero-bg {
+      background:
+        linear-gradient(90deg, rgba(10,10,10,.88) 0%, rgba(10,10,10,.60) 42%, rgba(10,10,10,.18) 100%),
+        linear-gradient(180deg, rgba(10,10,10,.10) 0%, rgba(10,10,10,.72) 100%),
+        url("pri.jpg");
+      background-size: cover;
+      background-position: center;
+    }
 
-.container{
-max-width:1200px;
-margin:auto;
-}
+    .btn-light {
+      background: #f3ece5;
+      color: #5b3b28;
+      transition: all .28s ease;
+      text-decoration: none;
+    }
 
-</style>
+    .btn-light:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 34px rgba(255,255,255,.10);
+    }
 
+    .btn-dark {
+      background: rgba(255,255,255,.04);
+      color: white;
+      border: 1px solid rgba(255,255,255,.10);
+      transition: all .28s ease;
+      text-decoration: none;
+    }
+
+    .btn-dark:hover {
+      background: rgba(255,255,255,.07);
+      transform: translateY(-2px);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: 0 10px 40px rgba(0,0,0,.35);
+      transition: all .35s ease;
+      cursor: pointer;
+      background: #111;
+    }
+
+    .gallery-grid img:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 24px 60px rgba(0,0,0,.55);
+    }
+
+    .founder-card img {
+      width: 100%;
+      height: 640px;
+      object-fit: cover;
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    @media (max-width: 768px) {
+      .founder-card img {
+        height: 500px;
+      }
+    }
+
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.94);
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 20px;
+    }
+
+    #lightbox img {
+      max-width: 92%;
+      max-height: 92%;
+      border-radius: 18px;
+    }
+
+    .fade-line {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent);
+    }
+
+    .section-soft {
+      background:
+        radial-gradient(circle at top left, rgba(139,94,60,.12), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(215,201,188,.08), transparent 30%);
+    }
+  </style>
 </head>
-
-<body>
-
-<!-- HERO -->
-
-<section class="section text-center">
-
-<img src="logo_studio.jpg" class="mx-auto mb-10 w-44">
-
-<h1 class="text-5xl font-semibold mb-6">
-STUDIO LOFT
-</h1>
-
-<p class="text-xl text-white/70 max-w-2xl mx-auto">
-O espaço que se adapta ao seu propósito.
-Um studio criativo pensado para produção de conteúdo, retratos,
-ensaios, campanhas e projetos visuais.
-</p>
-
-<div class="mt-10 flex gap-4 justify-center flex-wrap">
-
-<a href="https://www.instagram.com/studioloft.br/" target="_blank" class="btn">
-Instagram
-</a>
-
-<a href="https://wa.me/559184218754" target="_blank" class="btn">
-Agendar sessão
-</a>
-
-</div>
-
-</section>
-
-<!-- SOBRE O STUDIO -->
-
-<section class="section border-t border-white/10">
-
-<div class="container">
-
-<div class="max-w-3xl">
-
-<h2 class="text-4xl font-semibold mb-6">
-O espaço que se adapta ao seu propósito
-</h2>
-
-<p class="text-white/70 text-lg leading-relaxed mb-6">
-O Studio LOFT é um espaço versátil, amplo e integrado, pensado
-para atender diferentes necessidades criativas.
-</p>
-
-<p class="text-white/70 text-lg leading-relaxed mb-6">
-Seja para o empresário que busca um ambiente formal ou para
-criadores de conteúdo em busca de cenários dinâmicos,
-oferecemos flexibilidade e infraestrutura para diversas finalidades.
-</p>
-
-<p class="text-white/70 text-lg leading-relaxed">
-Aqui cada espaço se adapta ao seu propósito.
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- GALERIA -->
-
-<section class="section border-t border-white/10">
-
-<div class="container">
-
-<h2 class="text-4xl font-semibold mb-12">
-Ambiente do Studio
-</h2>
-
-<div class="grid md:grid-cols-3 gap-6">
-
-<img src="pri.jpg" class="rounded-xl">
-<img src="seg.jpg" class="rounded-xl">
-<img src="ter.jpg" class="rounded-xl">
-<img src="quart.jpg" class="rounded-xl">
-<img src="quint.jpg" class="rounded-xl">
-<img src="sext.jpg" class="rounded-xl">
-
-</div>
-
-</div>
-
-</section>
-
-<!-- FUNDADORES -->
-
-<section class="section border-t border-white/10">
-
-<div class="container">
-
-<h2 class="text-4xl font-semibold text-center mb-16">
-Fundadores
-</h2>
-
-<div class="grid md:grid-cols-2 gap-14">
-
-<!-- Everson -->
-
-<div>
-
-<img src="fundador_everson.jpg" class="rounded-2xl mb-6">
-
-<h3 class="text-3xl font-semibold mb-2">
-Everson Araujo
-</h3>
-
-<p class="text-white/60 mb-6">
-Fotógrafo • Fundador
-</p>
-
-<p class="text-white/70 leading-relaxed mb-4">
-Everson atua no cenário da fotografia publicitária e corporativa
-há mais de oito anos.
-</p>
-
-<p class="text-white/70 leading-relaxed mb-4">
-Com ampla experiência, sua visão é destacar a singularidade
-de cada trabalho, explorando desafios criativos e novas
-oportunidades para expressar sua paixão pela fotografia.
-</p>
-
-<p class="text-white/70 leading-relaxed">
-Agora está à frente do Studio Loft, um espaço colaborativo
-dedicado à criação de conteúdo e produção visual.
-</p>
-
-</div>
-
-
-<!-- Sabrina -->
-
-<div>
-
-<img src="fundador_sabrina.jpg" class="rounded-2xl mb-6">
-
-<h3 class="text-3xl font-semibold mb-2">
-Brenda Sabrina
-</h3>
-
-<p class="text-white/60 mb-6">
-Fotógrafa • Fundadora
-</p>
-
-<p class="text-white/70 leading-relaxed mb-4">
-Fotógrafa com experiência em casamentos, eventos,
-retratos femininos e fotografia de famílias.
-</p>
-
-<p class="text-white/70 leading-relaxed mb-4">
-Bacharel em Direito e empreendedora, Sabrina une
-sensibilidade artística e visão estratégica na criação
-de projetos visuais.
-</p>
-
-<p class="text-white/70 leading-relaxed">
-Ao lado de Everson, participa da criação do Studio Loft,
-um espaço colaborativo pensado para inspirar fotógrafos,
-criadores de conteúdo e empreendedores.
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- CTA -->
-
-<section class="section border-t border-white/10 text-center">
-
-<div class="container">
-
-<h2 class="text-4xl font-semibold mb-6">
-Quer produzir no Studio Loft?
-</h2>
-
-<p class="text-white/70 mb-10">
-Entre em contato e agende seu ensaio ou produção.
-</p>
-
-<a href="https://wa.me/559184218754" target="_blank" class="btn">
-Falar no WhatsApp
-</a>
-
-</div>
-
-</section>
-
-<!-- FOOTER -->
-
-<footer class="border-t border-white/10 py-8 text-center text-white/50 text-sm">
-
-© 2026 Studio Loft
-
-</footer>
-
+<body class="selection:bg-white selection:text-black">
+
+  <header class="fixed top-0 inset-x-0 z-50">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-4">
+      <div class="glass rounded-full px-5 py-3 flex items-center justify-between">
+        <a href="index.html" class="text-xl sm:text-2xl font-semibold tracking-tight text-white no-underline">
+          Studio Loft
+        </a>
+
+        <nav class="hidden md:flex items-center gap-7 text-sm text-white/75">
+          <a href="#sobre" class="hover:text-white transition">Sobre</a>
+          <a href="#galeria" class="hover:text-white transition">Galeria</a>
+          <a href="#fundadores" class="hover:text-white transition">Fundadores</a>
+          <a href="#contato" class="hover:text-white transition">Contato</a>
+        </nav>
+
+        <a href="https://www.instagram.com/studioloft.br/" target="_blank" class="btn-light rounded-full px-5 py-3 text-sm font-semibold">
+          Instagram do Studio
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero-bg min-h-screen flex items-center">
+      <div class="mx-auto max-w-7xl px-6 pt-32 pb-20 w-full">
+        <div class="max-w-4xl">
+          <div class="mb-8">
+            <img src="logo_studio.jpg" alt="Logo Studio Loft" class="w-24 h-24 sm:w-32 sm:h-32 object-cover rounded-2xl border border-white/10 shadow-softxl">
+          </div>
+
+          <p class="uppercase tracking-[0.30em] text-sm text-white/55 mb-4">
+            Studio Loft
+          </p>
+
+          <h1 class="title-font text-5xl sm:text-6xl lg:text-8xl leading-[0.92] tracking-[-0.04em] max-w-5xl">
+            O espaço criativo que se adapta ao seu propósito.
+          </h1>
+
+          <p class="mt-6 max-w-2xl text-lg sm:text-xl text-white/74 leading-relaxed">
+            Um espaço versátil, amplo e integrado para ensaios, produções, conteúdo, reuniões criativas e experiências visuais com identidade premium.
+          </p>
+
+          <div class="mt-10 flex flex-col sm:flex-row gap-4">
+            <a href="#galeria" class="btn-light rounded-full px-8 py-4 font-semibold text-center">
+              Ver fotos do Studio
+            </a>
+
+            <a href="https://wa.me/559184218754?text=Olá%20Everson,%20quero%20informações%20sobre%20o%20Studio%20Loft." target="_blank" class="btn-dark rounded-full px-8 py-4 font-semibold text-center">
+              Falar no WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre" class="py-24 section-soft border-t border-white/10">
+      <div class="mx-auto max-w-7xl px-6 grid lg:grid-cols-2 gap-8">
+        <div class="glass rounded-[32px] p-8 sm:p-10">
+          <p class="uppercase tracking-[0.28em] text-sm text-white/55 mb-4">
+            Sobre o espaço
+          </p>
+
+          <h2 class="title-font text-4xl sm:text-5xl leading-tight">
+            Um studio pensado para criatividade, imagem e experiência.
+          </h2>
+
+          <p class="mt-6 text-white/75 text-lg leading-relaxed">
+            O Studio Loft é um espaço versátil, amplo e integrado, pensado para atender diferentes necessidades criativas e profissionais.
+          </p>
+
+          <p class="mt-5 text-white/70 leading-relaxed">
+            Seja para empresários em busca de um ambiente formal, seja para criadores de conteúdo que desejam cenários dinâmicos e variados, o Studio Loft oferece flexibilidade total.
+          </p>
+
+          <p class="mt-5 text-white/70 leading-relaxed">
+            Além das áreas internas integradas, o espaço conta com possibilidades visuais que ampliam os usos e tornam cada projeto mais completo.
+          </p>
+
+          <p class="mt-5 text-white/70 leading-relaxed">
+            Aqui, cada ambiente se adapta ao seu propósito — profissional ou criativo.
+          </p>
+        </div>
+
+        <div class="glass rounded-[32px] p-8 sm:p-10 flex flex-col justify-between">
+          <div>
+            <p class="uppercase tracking-[0.28em] text-sm text-white/55 mb-4">
+              Informações
+            </p>
+
+            <h2 class="title-font text-4xl sm:text-5xl leading-tight">
+              Contato e localização
+            </h2>
+
+            <div class="fade-line my-8"></div>
+
+            <div class="space-y-5 text-white/75 text-lg">
+              <p><strong class="text-white">Studio:</strong> Studio Loft</p>
+              <p><strong class="text-white">Cidade:</strong> Castanhal - PA</p>
+              <p><strong class="text-white">Endereço:</strong> COLOQUE AQUI O ENDEREÇO EXATO</p>
+              <p><strong class="text-white">WhatsApp:</strong> +55 91 8421-8754</p>
+              <p><strong class="text-white">Instagram:</strong> @studioloft.br</p>
+            </div>
+          </div>
+
+          <div class="mt-10 flex flex-col sm:flex-row gap-4">
+            <a href="https://www.instagram.com/studioloft.br/" target="_blank" class="btn-light rounded-full px-7 py-4 font-semibold text-center">
+              Abrir Instagram
+            </a>
+
+            <a href="https://wa.me/559184218754?text=Olá%20Everson,%20quero%20alugar%20ou%20usar%20o%20Studio%20Loft." target="_blank" class="btn-dark rounded-full px-7 py-4 font-semibold text-center">
+              Solicitar informações
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="galeria" class="py-24 border-t border-white/10">
+      <div class="mx-auto max-w-7xl px-6">
+        <div class="mb-12 max-w-3xl">
+          <p class="uppercase tracking-[0.28em] text-sm text-white/55 mb-4">
+            Galeria
+          </p>
+          <h2 class="title-font text-4xl sm:text-5xl lg:text-6xl">
+            Conheça o Studio Loft
+          </h2>
+          <p class="mt-4 text-white/72 text-lg">
+            Uma identidade visual elegante, versátil e pensada para diferentes propostas de uso.
+          </p>
+        </div>
+
+        <div class="gallery-grid">
+          <img src="pri.jpg" alt="Studio Loft imagem 1" onclick="abrirImagem(this)">
+          <img src="seg.jpg" alt="Studio Loft imagem 2" onclick="abrirImagem(this)">
+          <img src="ter.jpg" alt="Studio Loft imagem 3" onclick="abrirImagem(this)">
+          <img src="quart.jpg" alt="Studio Loft imagem 4" onclick="abrirImagem(this)">
+          <img src="quint.jpg" alt="Studio Loft imagem 5" onclick="abrirImagem(this)">
+          <img src="sext.jpg" alt="Studio Loft imagem 6" onclick="abrirImagem(this)">
+          <img src="set.jpg" alt="Studio Loft imagem 7" onclick="abrirImagem(this)">
+          <img src="oitav.jpg" alt="Studio Loft imagem 8" onclick="abrirImagem(this)">
+        </div>
+      </div>
+    </section>
+
+    <section id="fundadores" class="py-24 border-t border-white/10 section-soft">
+      <div class="mx-auto max-w-7xl px-6">
+        <div class="text-center mb-16">
+          <p class="uppercase tracking-[0.28em] text-sm text-white/55 mb-4">
+            Fundadores
+          </p>
+          <h2 class="title-font text-4xl sm:text-5xl lg:text-6xl">
+            Quem está por trás do Studio Loft
+          </h2>
+          <p class="mt-4 text-white/70 text-lg">
+            Duas visões criativas unidas para construir um espaço com identidade e propósito.
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-10">
+          <article class="founder-card glass rounded-[32px] p-6 sm:p-8">
+            <img src="fundador_everson.jpg" alt="Everson Araujo" class="mb-8">
+            <p class="uppercase tracking-[0.25em] text-sm text-white/50 mb-3">
+              Fundador
+            </p>
+            <h3 class="text-3xl sm:text-4xl font-semibold">
+              Everson Araujo
+            </h3>
+            <p class="text-white/60 mt-2 mb-6">
+              Fotógrafo • Fundador
+            </p>
+
+            <div class="space-y-4 text-white/74 leading-relaxed text-lg">
+              <p>
+                Everson atua no cenário da fotografia publicitária e corporativa há mais de oito anos.
+              </p>
+              <p>
+                Com ampla experiência, sua visão é destacar a singularidade de cada trabalho, sempre explorando desafios criativos e novas possibilidades de expressão através da fotografia.
+              </p>
+              <p>
+                À frente do Studio Loft, desenvolve um espaço colaborativo dedicado à criação de conteúdo, pensado para inspirar conexões, fomentar ideias e elevar a produção criativa.
+              </p>
+            </div>
+          </article>
+
+          <article class="founder-card glass rounded-[32px] p-6 sm:p-8">
+            <img src="fundador_sabrina.jpg" alt="Brenda Sabrina" class="mb-8">
+            <p class="uppercase tracking-[0.25em] text-sm text-white/50 mb-3">
+              Fundadora
+            </p>
+            <h3 class="text-3xl sm:text-4xl font-semibold">
+              Brenda Sabrina
+            </h3>
+            <p class="text-white/60 mt-2 mb-6">
+              Fotógrafa • Fundadora
+            </p>
+
+            <div class="space-y-4 text-white/74 leading-relaxed text-lg">
+              <p>
+                Fotógrafa e fundadora do Studio Loft, Brenda reúne experiência em casamentos, eventos, retratos femininos e fotografia de famílias.
+              </p>
+              <p>
+                Bacharel em Direito, pós-graduanda e empreendedora, une sensibilidade artística e visão empresarial para criar experiências visuais marcantes.
+              </p>
+              <p>
+                Ao lado de Everson, participa da criação de um studio colaborativo pensado para inspirar empreendedores, fotógrafos e criadores a explorarem sua criatividade em um espaço único.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato" class="py-24 border-t border-white/10">
+      <div class="mx-auto max-w-5xl px-6 text-center">
+        <div class="glass rounded-[36px] px-6 py-14 sm:px-10">
+          <p class="uppercase tracking-[0.28em] text-sm text-white/55 mb-4">
+            Studio Loft
+          </p>
+
+          <h2 class="title-font text-4xl sm:text-5xl lg:text-6xl">
+            Aqui, o espaço se adapta ao seu propósito.
+          </h2>
+
+          <p class="mt-5 text-white/72 text-lg max-w-3xl mx-auto">
+            Entre em contato para ensaios, produções, conteúdo, reuniões criativas e outras finalidades dentro do Studio Loft.
+          </p>
+
+          <div class="mt-8 flex flex-col sm:flex-row justify-center gap-4">
+            <a href="https://wa.me/559184218754?text=Olá%20Everson,%20quero%20mais%20informações%20sobre%20o%20Studio%20Loft." target="_blank" class="btn-light rounded-full px-8 py-4 font-semibold">
+              Falar no WhatsApp
+            </a>
+
+            <a href="index.html" class="btn-dark rounded-full px-8 py-4 font-semibold">
+              Voltar ao site principal
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/10 py-8">
+    <div class="mx-auto max-w-7xl px-6 flex flex-col md:flex-row gap-4 items-center justify-between text-sm text-white/55">
+      <div>© 2026 Studio Loft. Todos os direitos reservados.</div>
+
+      <div class="flex items-center gap-5">
+        <a href="index.html" class="text-white no-underline">Site principal</a>
+        <a href="https://www.instagram.com/studioloft.br/" target="_blank" class="text-white no-underline">Instagram</a>
+        <a href="https://wa.me/559184218754" target="_blank" class="text-white no-underline">WhatsApp</a>
+      </div>
+    </div>
+  </footer>
+
+  <div id="lightbox" onclick="fecharImagem()">
+    <img id="lightbox-img" alt="Imagem ampliada">
+  </div>
+
+  <script>
+    function abrirImagem(img) {
+      document.getElementById("lightbox").style.display = "flex";
+      document.getElementById("lightbox-img").src = img.src;
+    }
+
+    function fecharImagem() {
+      document.getElementById("lightbox").style.display = "none";
+    }
+  </script>
 </body>
 </html>
